@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Produits Naturels</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar">
+    <div class="logo">
+        <img src="logo.png" alt="Logo" />
+        <span>Produits Naturels</span>
+    </div>
+    <ul class="nav-links">
+        <li><a href="#products">المنتجات</a></li>
+        <li><a href="#contact">اتصل بنا</a></li>
+    </ul>
+</nav>
+
+<!-- Header -->
+<header>
+    <h1>🌿 Bienvenue aux Produits Naturels</h1>
+    <p>Zait Zaytoun - 3asal Hor - Smen Beldi</p>
+</header>
+
+<!-- Products Section -->
+<section class="products" id="products">
+
+    <div class="card">
+        <img src="zait.jpg" alt="Zait Zaytoun">
+        <h2>Zait Zaytoun</h2>
+        <p>Huile d'olive 100% naturelle</p>
+        <span>80 DH / L</span>
+        <button onclick="openForm('Zait Zaytoun')">طلب عبر WhatsApp</button>
+    </div>
+
+    <div class="card">
+        <img src="3asal.jpg" alt="3asal">
+        <h2>3asal Hor</h2>
+        <p>Miel naturel pur</p>
+        <span>120 DH</span>
+        <button onclick="openForm('3asal Hor')">طلب عبر WhatsApp</button>
+    </div>
+
+    <div class="card">
+        <img src="smen.jpg" alt="Smen">
+        <h2>Smen Beldi</h2>
+        <p>Beurre fermenté traditionnel</p>
+        <span>90 DH</span>
+        <button onclick="openForm('Smen Beldi')">طلب عبر WhatsApp</button>
+    </div>
+
+</section>
+
+<!-- Formulaire -->
+<div id="orderForm" class="form-popup">
+    <form class="form-container" onsubmit="submitForm(event)">
+        <h2>طلب <span id="productName"></span></h2>
+
+        <label for="name"><b>الإسم</b></label>
+        <input type="text" id="name" placeholder="أدخل الإسم" required>
+
+        <label for="city"><b>المدينة</b></label>
+        <input type="text" id="city" placeholder="أدخل المدينة" required>
+
+        <label for="phone"><b>رقم الهاتف</b></label>
+        <input type="tel" id="phone" placeholder="أدخل رقم الهاتف" required>
+
+        <button type="submit" class="btn">إرسال عبر WhatsApp</button>
+        <button type="button" class="btn cancel" onclick="closeForm()">إلغاء</button>
+    </form>
+</div>
+
+<!-- Footer -->
+<footer id="contact">
+    <div class="footer-content">
+        <p>📞 0706388207</p>
+        <p>📍 المغرب</p>
+        <p><a href="https://wa.me/212706388207" target="_blank">راسلنا على WhatsApp</a></p>
+    </div>
+    <p class="footer-bottom">© 2026 Produits Naturels</p>
+</footer>
+
+<script>
+const myWhatsApp = "212706388207"; // رقمك
+
+function openForm(product) {
+    document.getElementById('orderForm').style.display = 'block';
+    document.getElementById('productName').innerText = product;
+}
+
+function closeForm() {
+    document.getElementById('orderForm').style.display = 'none';
+}
+
+function submitForm(e) {
+    e.preventDefault();
+    const name = document.getElementById('name').value;
+    const city = document.getElementById('city').value;
+    const phone = document.getElementById('phone').value;
+    const product = document.getElementById('productName').innerText;
+
+    const message = `طلب منتج:%20${encodeURIComponent(product)}%0Aالإسم:%20${encodeURIComponent(name)}%0Aالمدينة:%20${encodeURIComponent(city)}%0Aرقم الهاتف:%20${encodeURIComponent(phone)}`;
+    const url = `https://wa.me/${myWhatsApp}?text=${message}`;
+
+    window.open(url, '_blank');
+    closeForm();
+    document.querySelector('.form-container').reset();
+}
+</script>
+
+</body>
+</html>

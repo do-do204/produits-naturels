@@ -1,0 +1,120 @@
+/* Reset */
+* { box-sizing: border-box; margin:0; padding:0; }
+body { font-family: Arial, sans-serif; background-color: #f0f7f0; }
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #2e7d32;
+    padding: 10px 20px;
+    color: white;
+}
+.navbar .logo img { width: 40px; vertical-align: middle; margin-right: 10px; }
+.navbar ul { list-style: none; display: flex; }
+.navbar ul li { margin-left: 20px; }
+.navbar ul li a { color: white; text-decoration: none; font-weight: bold; }
+.navbar ul li a:hover { text-decoration: underline; }
+
+/* Header */
+header { text-align: center; padding: 20px; color: white; background-color: #388e3c; }
+
+/* Products grid */
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Card */
+.card {
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+.card img { width: 100%; height: 200px; border-radius: 10px; object-fit: cover; }
+.card h2 { color: #2e7d32; margin: 10px 0 5px; }
+.card span { display:block; margin:10px 0; font-weight:bold; color:#4e342e; }
+button { background-color:#66bb6a; color:white; border:none; padding:10px; border-radius:5px; cursor:pointer; width:100%; margin-bottom:10px; font-size:16px; }
+button:hover { background-color:#388e3c; }
+button.cancel { background-color:#a52a2a; }
+button.cancel:hover { background-color:#8b0000; }
+
+/* Form popup */
+.form-popup {
+    display:none;
+    position: fixed;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    border:3px solid #2e7d32;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    padding:20px;
+    width:90%;
+    max-width:400px;
+    z-index:10;
+    box-shadow:0 5px 10px rgba(0,0,0,0.3);
+}
+.form-container input[type=text], .form-container input[type=tel] {
+    width:100%; padding:10px; margin:5px 0 15px 0; border:1px solid #ccc; border-radius:5px;
+}
+
+/* Footer */
+footer { background-color:#2e7d32; color:white; text-align:center; padding:15px; }
+footer a { color:#ffffff; text-decoration:underline; }
+footer a:hover { color:#c8e6c9; }
+footer .footer-bottom { margin-top:10px; font-size:14px; }
+
+/* Responsive */
+@media(max-width:600px){
+    .navbar { flex-direction: column; }
+    .navbar ul { flex-direction: column; }
+    .navbar ul li { margin:10px 0; }
+}
+.card img {
+    width: 100%;
+    height: 200px;
+    border-radius: 10px;
+    object-fit: cover;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+/* زر الطلب */
+button {
+    background-color: #66bb6a;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 10px;
+    font-size: 16px;
+    transition: transform 0.2s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+    background-color: #57a05c;
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* زر الإلغاء */
+button.cancel {
+    background-color: #a52a2a;
+}
+
+button.cancel:hover {
+    background-color: #8b0000;
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
